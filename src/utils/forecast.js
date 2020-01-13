@@ -10,12 +10,16 @@ const forecast = (lat, long, callback) => {
         } else {
             if(body.currently.precipProbability === 0){
                 callback(undefined, body.daily.data[0].summary + ' It is currently ' + 
-                body.currently.temperature + ' degrees out.')
+                body.currently.temperature + ' degrees out. The high for the day is ' +
+                body.daily.data[0].apparentTemperatureMax + ' with a low of ' + 
+                body.daily.data[0].apparentTemperatureMin)
             } else {
                 callback(undefined, body.daily.data[0].summary + ' It is currently ' + 
                 body.currently.temperature + ' degrees out. There is a ' + 
                 body.currently.precipProbability + '% chance of ' + 
-                body.currently.precipType + '.')
+                body.currently.precipType + '. The high for the day is ' +
+                body.daily.data[0].apparentTemperatureMax + 'with a low of ' + 
+                body.daily.data[0].apparentTemperatureMin)
             }
         }
     })
